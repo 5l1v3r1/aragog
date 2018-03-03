@@ -41,10 +41,7 @@ def separator():
                         sys.stdout.close()
                         sys.stdout = sys.__stdout__
 		else:
-			sys.stdout = open('unknown.txt','a')
-                        sys.stdout.write(mails)
-                        sys.stdout.close()
-                        sys.stdout = sys.__stdout__
+			pass
 	filter()
 def gmail():
 	#time.sleep(1)
