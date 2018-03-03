@@ -35,7 +35,7 @@ def separator():
                         sys.stdout.write(mails)
                         sys.stdout.close()
                         sys.stdout = sys.__stdout__
-		elif name.endswith("hotmail.com") :
+		elif mails.endswith("hotmail.com") :
 			sys.stdout = open('hotmail.txt','a')
                         sys.stdout.write(mails)
                         sys.stdout.close()
