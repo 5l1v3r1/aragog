@@ -47,48 +47,54 @@ def gmail():
 	#time.sleep(1)
 	# Check for Gmail accounts that Exists/Not
 	# If email not valid that means that the account is vulnerable
-	weblist = "gmailfb.txt"
-        weblist = open(weblist)
-        for i in weblist.readlines():
-                link = i.strip("\n")
-		try:
-			link1 = link
-			payload = {'continue': 'https://accounts.google.com/ManageAccount', 'f.req': '["%s","AEThLlxxiVGkhcsiEM9w_wb5MrQfQMX1jQpxGBevjgPIbUtF-byVilcvUSOwiIe5rmZj82Jv0MyJ_RJrxs4aQpX38ikbGqih0ic3_ketV0QWbMJKNiEWTrz7mWlspwWUPkrDXl52ZBfIIkOyPci85JYIAWU0ZskJmhg6HkbJakq5NEjjNf6IH6b7aARMDCsKojBZtHUMZ2FYLDBHX3_qiSP8HSsVBCbYdtadAOlsqOW_6m_4IOcRkPwGtULmq_Bdrm_KANaWAFvTT7F7R75zMtse5OrgNpb9vSSFVcVp0RPv5QskfuiZBFBfOVboB-LJph8CnrcBYGGrLqdqCE4irh1xrIr6IRy-9w",[],null,"XK",null,null,2,false,true,[null,null,[2,1,null,1,"https://accounts.google.com/ServiceLogin",null,[],4],1,[null,null,[]],null,null,null,true],"%s"]' % (link, link1)}
-			headers = {'Google-Accounts-XSRF': '1'}
-			r = requests.post("https://accounts.google.com/_/signin/sl/lookup?hl=en&_reqid=344523&rt=j", data=payload, headers=headers)
-			a = (r.text)
+	try:
+		weblist = "gmailfb.txt"
+        	weblist = open(weblist)
+        	for i in weblist.readlines():
+                	link = i.strip("\n")
 			try:
-			        if link in a:
-			                print "Not Hacked! " + link
-			        else:
-			                print "Hacked! " + link
+				link1 = link
+				payload = {'continue': 'https://accounts.google.com/ManageAccount', 'f.req': '["%s","AEThLlxxiVGkhcsiEM9w_wb5MrQfQMX1jQpxGBevjgPIbUtF-byVilcvUSOwiIe5rmZj82Jv0MyJ_RJrxs4aQpX38ikbGqih0ic3_ketV0QWbMJKNiEWTrz7mWlspwWUPkrDXl52ZBfIIkOyPci85JYIAWU0ZskJmhg6HkbJakq5NEjjNf6IH6b7aARMDCsKojBZtHUMZ2FYLDBHX3_qiSP8HSsVBCbYdtadAOlsqOW_6m_4IOcRkPwGtULmq_Bdrm_KANaWAFvTT7F7R75zMtse5OrgNpb9vSSFVcVp0RPv5QskfuiZBFBfOVboB-LJph8CnrcBYGGrLqdqCE4irh1xrIr6IRy-9w",[],null,"XK",null,null,2,false,true,[null,null,[2,1,null,1,"https://accounts.google.com/ServiceLogin",null,[],4],1,[null,null,[]],null,null,null,true],"%s"]' % (link, link1)}
+				headers = {'Google-Accounts-XSRF': '1'}
+				r = requests.post("https://accounts.google.com/_/signin/sl/lookup?hl=en&_reqid=344523&rt=j", data=payload, headers=headers)
+				a = (r.text)
+				try:
+			        	if link in a:
+			                	print "Not Hacked! " + link
+			        	else:
+			                	print "Hacked! " + link
+				except:
+			        	raise
 			except:
-			        raise
-		except:
-			raise
+				raise
+	except:
+		pass
 def hotmail():
 	#time.sleep(1)
 	# Check for Hotmail accounts that Exists/Not
         # If email not valid that means that the account is vulnerable
-	weblist = "hotmailfb.txt"
-        weblist = open(weblist)
-        for i in weblist.readlines():
-                link = i.strip("\n")
-		try:
-			url = "https://login.live.com/GetCredentialType.srf?vv=1600&mkt=EN-US&lc=1033"
-			data = {'username': link, 'uaid': '8ab60b8743e1474798f62161f540faef'}
-			headers = {'Content-type': 'application/json', 'Accept': 'text/plain', 'Cookie': '8ab60b8743e1474798f62161f540faef'}
-			r = requests.post(url, data=json.dumps(data), headers=headers)
+	try:
+		weblist = "hotmailfb.txt"
+        	weblist = open(weblist)
+        	for i in weblist.readlines():
+                	link = i.strip("\n")
 			try:
-				for line in r:
-					if '"IfExistsResult":1' in line:
-						print "Hacked! " + link
-					elif '"IfExistsResult":0' in line:
-						print "Not Hacked! " + link
+				url = "https://login.live.com/GetCredentialType.srf?vv=1600&mkt=EN-US&lc=1033"
+				data = {'username': link, 'uaid': '8ab60b8743e1474798f62161f540faef'}
+				headers = {'Content-type': 'application/json', 'Accept': 'text/plain', 'Cookie': '8ab60b8743e1474798f62161f540faef'}
+				r = requests.post(url, data=json.dumps(data), headers=headers)
+				try:
+					for line in r:
+						if '"IfExistsResult":1' in line:
+							print "Hacked! " + link
+						elif '"IfExistsResult":0' in line:
+							print "Not Hacked! " + link
+				except:
+					raise
 			except:
 				raise
-		except:
-			raise
+	except:
+		pass
 def filter():
 	# Checks if hotmail.txt & gmail.txt have existing accounts
 	# Seperates them to hotmailfb.txt & gmailfb.txt
