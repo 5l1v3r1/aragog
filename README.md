@@ -3,7 +3,7 @@ Aragog | Facebook Invalid Email Checker
 
 Aragog is a python 2.7 script which looks for Facebook Accounts that have invalid emails on their account. This script was only created for Gmail & Hotmail to be checked, but in the future this could be further upgraded in new features. 
 
-The attack scenario through this script is if the email of the account doesn't exist, the hacker will create a new one same as the Facebook Account and do a reset password. 
+The attack scenario through this script is if the email of the account doesn't exist, the hacker will create a new one same as the Facebook Account and do a reset password. The usage of this script is through putting all the email accounts into filename.txt then run the script and write the mail-list. And the script is going to filter invalid and only take Hotmail & Gmail Accounts. 
 
 
 ## Screenshot
