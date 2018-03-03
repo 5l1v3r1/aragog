@@ -30,17 +30,16 @@ def separator():
 	filename = raw_input("EmailFile:/> ")
 	file = open(filename, "r")
 	for mails in file:
-		if "gmail" in mails:
+		if mails.endswith("gmail.com") :
 			sys.stdout = open('gmail.txt','a')
                         sys.stdout.write(mails)
                         sys.stdout.close()
                         sys.stdout = sys.__stdout__
-		elif "hotmail" in mails:
+		elif name.endswith("hotmail.com") :
 			sys.stdout = open('hotmail.txt','a')
                         sys.stdout.write(mails)
                         sys.stdout.close()
                         sys.stdout = sys.__stdout__
-
 		else:
 			sys.stdout = open('unknown.txt','a')
                         sys.stdout.write(mails)
