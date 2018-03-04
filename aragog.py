@@ -64,9 +64,9 @@ def gmail():
 			        	else:
 			                	print "Hacked! " + link
 				except:
-			        	raise
+			        	pass
 			except:
-				raise
+				pass
 	except:
 		pass
 def hotmail():
@@ -90,9 +90,9 @@ def hotmail():
 						elif '"IfExistsResult":0' in line:
 							print "Not Hacked! " + link
 				except:
-					raise
+					pass
 			except:
-				raise
+				pass
 	except:
 		pass
 def filter():
@@ -151,7 +151,7 @@ def filter():
                                         pass
                                 #time.sleep(2.5)
                 except:
-			raise
+			pass
 	attacker()
 def attacker():
 	# Calls two functions that will check if the facebook accounts have valid email
